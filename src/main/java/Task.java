@@ -3,14 +3,12 @@ import javax.swing.*;
 public class Task {
     private final String description;
     private boolean isDone;
-
     public Task(String description) {
         this.description = description;
         this.isDone = false;
     }
-
     public String getStatusIcon() {
-        return (isDone ? "X" : " "); // mark done task with X
+        return isDone ? "X" : " ";
     }
 
     public void setStatus(boolean status) {
@@ -18,8 +16,6 @@ public class Task {
     }
 
     public String toString() {
-        String check = isDone ? "X" : " ";
-        return ("[" + check + "] " + description);
+        return (isDone ? "[X] " : "[ ] ") + description;
     }
-
 }

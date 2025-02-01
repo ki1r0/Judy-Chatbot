@@ -1,2 +1,5 @@
-package PACKAGE_NAME;public class JudyException {
+public class JudyException extends Exception {
+    public JudyException(String message) {
+        super(message);
+    }
 }
