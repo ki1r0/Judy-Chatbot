@@ -29,7 +29,7 @@ public class Judy {
         printResponse(response.toString()); // Use printResponse for consistent formatting
     }
 
-    private static void addTask(String[] description, TaskType type, String[] deadline, String[] start, String[] end) {
+    private static void addTask(String[] description, int type, String[] deadline, String[] start, String[] end) {
         if (description.length == 0) {
             printError("The description cannot be empty. Please provide a valid description.");
             return;
@@ -37,13 +37,13 @@ public class Judy {
 
         Task task = null;
         switch (type) {
-            case TODO:
+            case 0:
                 task = new Todo(String.join(" ", description));
                 break;
-            case DEADLINE:
+            case 1:
                 task = new Deadline(String.join(" ", description), String.join(" ", deadline));
                 break;
-            case EVENT:
+            case 2:
                 task = new Event(String.join(" ", description), String.join(" ", start), String.join(" ", end));
                 break;
             default:
@@ -108,7 +108,7 @@ public class Judy {
                 } else if (input.startsWith("todo")) {
                     String[] parts = input.split(" ");
                     String[] description = Arrays.copyOfRange(parts, 1, parts.length);
-                    addTask(description, TaskType.TODO, null, null, null);
+                    addTask(description, 0, null, null, null);
 
                 } else if (input.startsWith("deadline")) {
                     String[] parts = input.split("/");
@@ -117,7 +117,7 @@ public class Judy {
                         String[] description = Arrays.copyOfRange(firstHalf, 1, firstHalf.length);
                         String[] secondHalf = parts[1].split(" ");
                         String[] deadline = Arrays.copyOfRange(secondHalf, 1, secondHalf.length);
-                        addTask(description, TaskType.DEADLINE, deadline, null, null);
+                        addTask(description, 1, deadline, null, null);
                     } else {
                         throw new JudyException("Invalid deadline format. Use: deadline <description> /by <time>");
                     }
@@ -131,7 +131,7 @@ public class Judy {
                         String[] start = Arrays.copyOfRange(second, 1, second.length);
                         String[] third = parts[2].split(" ");
                         String[] end = Arrays.copyOfRange(third, 1, third.length);
-                        addTask(description, TaskType.EVENT, null, start, end);
+                        addTask(description, 2, null, start, end);
                     } else {
                         throw new JudyException("Invalid event format. Use: deadline <description> /by <time>");
                     }
