@@ -135,6 +135,16 @@ public class Judy {
                     } else {
                         throw new JudyException("Invalid event format. Use: deadline <description> /by <time>");
                     }
+
+                } else if (input.startsWith("delete")) {
+                    String[] parts = input.split(" ");
+                    if (parts.length == 2) {
+                        int number = Integer.parseInt(parts[1]);
+                        deleteTask(number);
+                    } else {
+                        throw new JudyException("Invalid delete format. Use: delete <index>");
+                    }
+
                 } else {
                     throw new JudyException("Unknown command. Please try again with a valid command.");
                 }
