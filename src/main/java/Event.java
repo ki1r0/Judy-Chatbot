@@ -1,11 +1,13 @@
+import java.time.LocalDateTime;
+
 public class Event extends Task {
     private final String start;
     private final String end;
 
     public Event(String description, String start, String end) {
         super(description);
-        this.start = start;
-        this.end = end;
+        this.start = parseDateTime(start);
+        this.end = parseDateTime(start);
     }
     @Override
     public String toString() {
