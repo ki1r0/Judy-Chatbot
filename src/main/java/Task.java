@@ -20,6 +20,7 @@ public class Task {
     }
 
     public String parseDateTime(String dateTime) {
+        dateTime = dateTime.trim();
         DateTimeFormatter formatters[] = {
                 DateTimeFormatter.ofPattern("d/MM/yyyy HHmm"),
                 DateTimeFormatter.ofPattern("d/M/yyyy HHmm"),
