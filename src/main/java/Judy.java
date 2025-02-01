@@ -53,8 +53,8 @@ public class Judy {
 
         list.add(task);
         String response = String.format("Got it. I've added this task:\n" +
-                "      %s\n" +
-                "    Now you have %d tasks in the list.", task, list.size());
+                    "      %s\n" +
+                    "    Now you have %d tasks in the list.", task, list.size());
         printResponse(response);
     }
 
@@ -72,7 +72,7 @@ public class Judy {
         printResponse(response);
     }
 
-    private static void updateStatus(int index, boolean isMark) {
+    private static void updateStatus (int index, boolean isMark) {
         if (index < 1 || index > list.size()) {
             printError("Invalid task number. Please provide a number between 1 and " + list.size() + ".");
             return;
@@ -92,7 +92,7 @@ public class Judy {
 
         String input = inputHandler.getMessage();
         while (!input.equals("bye")) {
-
+            try {
                 if (input.equals("list")) {
                     printList();
                 } else if (input.startsWith("mark") || input.startsWith("unmark")) {
@@ -101,6 +101,8 @@ public class Judy {
                         int number = Integer.parseInt(parts[1]);
                         boolean isMark = input.startsWith("mark");
                         updateStatus(number, isMark);
+                    } else {
+                        throw new JudyException("Invalid mark command. Usage: mark <task number>");
                     }
 
                 } else if (input.startsWith("todo")) {
@@ -116,6 +118,8 @@ public class Judy {
                         String[] secondHalf = parts[1].split(" ");
                         String[] deadline = Arrays.copyOfRange(secondHalf, 1, secondHalf.length);
                         addTask(description, 1, deadline, null, null);
+                    } else {
+                        throw new JudyException("Invalid deadline format. Use: deadline <description> /by <time>");
                     }
 
                 } else if (input.startsWith("event")) {
@@ -128,20 +132,20 @@ public class Judy {
                         String[] third = parts[2].split(" ");
                         String[] end = Arrays.copyOfRange(third, 1, third.length);
                         addTask(description, 2, null, start, end);
+                    } else {
+                        throw new JudyException("Invalid event format. Use: deadline <description> /by <time>");
                     }
-
-                } else if (input.startsWith("delete")) {
-                    String[] parts = input.split(" ");
-                    if (parts.length == 2) {
-                        int number = Integer.parseInt(parts[1]);
-                        deleteTask(number);
-                    }
-
+                } else {
+                    throw new JudyException("Unknown command. Please try again with a valid command.");
                 }
-                input = inputHandler.getMessage();
-            
-            printResponse(" Bye. Hope to see you again soon!");
+            } catch (JudyException e) {
+                printError(e.getMessage());
+            } catch (NumberFormatException e) {
+                printError("Invalid number format. Please provide a valid task number.");
+            }
+            input = inputHandler.getMessage();
         }
+        printResponse(" Bye. Hope to see you again soon!");
     }
 }
 
