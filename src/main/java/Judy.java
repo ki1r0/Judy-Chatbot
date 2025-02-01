@@ -114,27 +114,19 @@ public class Judy {
                     addTask(description, TaskType.TODO, null, null, null);
 
                 } else if (input.startsWith("deadline")) {
-                    String[] parts = input.split("/");
+                    String[] parts = input.split("/by");
                     if (parts.length == 2) {
-                        String[] firstHalf = parts[0].split(" ");
-                        String[] description = Arrays.copyOfRange(firstHalf, 1, firstHalf.length);
-                        String[] secondHalf = parts[1].split(" ");
-                        String[] deadline = Arrays.copyOfRange(secondHalf, 1, secondHalf.length);
-                        addTask(description, TaskType.DEADLINE, deadline, null, null);
+                        String[] description = parts[0].trim().split(" ", 2);
+                        addTask(new String[]{description[1]}, TaskType.DEADLINE, new String[]{parts[1]}, null, null);
                     } else {
                         throw new JudyException("Invalid deadline format. Use: deadline <description> /by <time>");
                     }
 
                 } else if (input.startsWith("event")) {
-                    String[] parts = input.split("/");
+                    String[] parts = input.split("/from |/to ");
                     if (parts.length == 3) {
-                        String[] first = parts[0].split(" ");
-                        String[] description = Arrays.copyOfRange(first, 1, first.length);
-                        String[] second = parts[1].split(" ");
-                        String[] start = Arrays.copyOfRange(second, 1, second.length);
-                        String[] third = parts[2].split(" ");
-                        String[] end = Arrays.copyOfRange(third, 1, third.length);
-                        addTask(description, TaskType.EVENT, null, start, end);
+                        String[] description = parts[0].trim().split(" ", 2);
+                        addTask(new String[]{description[1]}, TaskType.EVENT, null, new String[]{parts[1]}, new String[]{parts[2]});
                     } else {
                         throw new JudyException("Invalid event format. Use: deadline <description> /by <time>");
                     }
