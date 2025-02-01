@@ -52,6 +52,7 @@ public class Judy {
         }
 
         list.add(task);
+        Storage.saveTasks(list);
         String response = String.format("Got it. I've added this task:\n" +
                     "      %s\n" +
                     "    Now you have %d tasks in the list.", task, list.size());
@@ -66,6 +67,7 @@ public class Judy {
 
         Task task = list.get(index - 1);
         list.remove(index - 1);
+        Storage.saveTasks(list);
         String response = String.format("Noted. I've removed this task:\n" +
                 "      %s\n" +
                 "    Now you have %d tasks in the list.", task, list.size());
@@ -79,6 +81,7 @@ public class Judy {
         }
         Task task = list.get(index - 1);
         task.setStatus(isMark);
+        Storage.saveTasks(list);
         String message = isMark ? "Nice! I've marked this task as done:"
                 : "OK, I've marked this task as not done yet:";
         printResponse(message + "\n" + "    " + task);
