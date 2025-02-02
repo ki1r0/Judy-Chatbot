@@ -81,7 +81,7 @@ public class TaskList {
         StringBuilder response = new StringBuilder("Here are the tasks in your list:\n");
         int index = 1;
         for (Task task : this.list) {
-            response.append("    ").append(index).append(". ").append(task.toString());
+            response.append("    ").append(index).append(". ").append(task.toString()).append("\n");
             index++;
         }
 

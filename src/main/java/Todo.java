@@ -10,6 +10,6 @@ public class Todo extends Task {
 
     @Override
     public String toDataString() {
-        return "T | " + super.toString();
+        return "T | " + super.toDataString();
     }
 }

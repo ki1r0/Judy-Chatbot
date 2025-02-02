@@ -1,6 +1,9 @@
 public class Ui {
     private final String logo = "Judy";
     private InputHandler inputHandler;
+    public Ui() {
+        inputHandler = new InputHandler();
+    }
     public void showLoadingError() {
         this.inputHandler = new InputHandler();
     }
