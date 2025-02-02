@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Judy.TaskListTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-02-02T17:56:12" hostname="DESKTOP-LRFT759" time="0.393">
+  <properties/>
+  <testcase name="testAddTask()" classname="Judy.TaskListTest" time="0.387"/>
+  <testcase name="testDeleteTask_ValidIndex()" classname="Judy.TaskListTest" time="0.005"/>
+  <system-out><![CDATA[    ____________________________________________________________
+    Got it. I've added this task:
+      [T][ ] read book
+    Now you have 1 tasks in the list.
+    ____________________________________________________________
+    ____________________________________________________________
+    Got it. I've added this task:
+      [T][ ] read book
+    Now you have 1 tasks in the list.
+    ____________________________________________________________
+    ____________________________________________________________
+    Noted. I've removed this task:
+      [T][ ] read book
+    Now you have 0 tasks in the list.
+    ____________________________________________________________
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Judy.TaskTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-02-02T17:56:12" hostname="DESKTOP-LRFT759" time="0.016">
+  <properties/>
+  <testcase name="parseDateTime_fail()" classname="Judy.TaskTest" time="0.008"/>
+  <testcase name="parseDateTime_test()" classname="Judy.TaskTest" time="0.007"/>
+  <system-out><![CDATA[Invalid date format.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
