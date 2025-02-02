@@ -3,11 +3,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Storage {
-    private static final String FILE_PATH = "./data/judy.txt";
+    private final String filePath;
 
-    public static void saveTasks(List<Task> tasks) {
+    public Storage(String filePath) {
+        this.filePath = filePath;
+    }
+
+    public void saveTasks(List<Task> tasks) {
         try {
-            File file = new File(FILE_PATH);
+            File file = new File(this.filePath);
             File parentDir = file.getParentFile();
             if (!parentDir.exists()) {
                 parentDir.mkdirs();
@@ -24,9 +28,9 @@ public class Storage {
         }
     }
 
-    public static List<Task> loadTasks() {
+    public List<Task> loadTasks() {
         List<Task> tasks = new ArrayList<>();
-        File file = new File(FILE_PATH);
+        File file = new File(this.filePath);
 
         if (!file.exists()) {
             return tasks; // Return an empty list if the file doesn't exist
@@ -37,9 +41,7 @@ public class Storage {
             while ((line = reader.readLine()) != null) {
                 try {
                     Task task = parseTask(line);
-                    if (task != null) {
-                        tasks.add(task);
-                    }
+                    tasks.add(task);
                 } catch (Exception e) {
                     System.out.println("Warning: Skipping corrupted line -> " + line);
                 }

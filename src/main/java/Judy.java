@@ -2,108 +2,38 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Judy {
-    static ArrayList<Task> list = new ArrayList<>();
-
-    private static void printResponse(String message) {
-        String separator = "    ____________________________________________________________";
-        System.out.println(separator);
-        System.out.println("    " + message);
-        System.out.println(separator);
-    }
-
-    private static void printError(String errorMessage) {
-        printResponse("ERROR: " + errorMessage);
-    }
-
-    private static void printList() {
-        StringBuilder response = new StringBuilder("Here are the tasks in your list:\n");
-        int index = 1;
-        for (Task task : list) {
-            response.append("    ").append(index).append(". ").append(task.toString());
-            index++;
-        }
-
-        if (list.isEmpty()) {
-            response.append("    No tasks found in the list.");
-        }
-        printResponse(response.toString()); // Use printResponse for consistent formatting
-    }
-
-    private static void addTask(String[] description, TaskType type, String[] deadline, String[] start, String[] end) {
-        if (description.length == 0) {
-            printError("The description cannot be empty. Please provide a valid description.");
-            return;
-        }
-
-        Task task = null;
-        switch (type) {
-            case TODO:
-                task = new Todo(String.join(" ", description));
-                break;
-            case DEADLINE:
-                task = new Deadline(String.join(" ", description), String.join(" ", deadline));
-                break;
-            case EVENT:
-                task = new Event(String.join(" ", description), String.join(" ", start), String.join(" ", end));
-                break;
-            default:
-                printError("Unknown task type. Please try again.");
-                return;
-        }
-
-        list.add(task);
-        Storage.saveTasks(list);
-        String response = String.format("Got it. I've added this task:\n" +
-                    "      %s\n" +
-                    "    Now you have %d tasks in the list.", task, list.size());
-        printResponse(response);
-    }
-
-    private static void deleteTask(int index) {
-        if (index < 1 || index > list.size()) {
-            printError("Invalid task number. Please provide a number between 1 and " + list.size() + ".");
-            return;
-        }
-
-        Task task = list.get(index - 1);
-        list.remove(index - 1);
-        Storage.saveTasks(list);
-        String response = String.format("Noted. I've removed this task:\n" +
-                "      %s\n" +
-                "    Now you have %d tasks in the list.", task, list.size());
-        printResponse(response);
-    }
-
-    private static void updateStatus (int index, boolean isMark) {
-        if (index < 1 || index > list.size()) {
-            printError("Invalid task number. Please provide a number between 1 and " + list.size() + ".");
-            return;
-        }
-        Task task = list.get(index - 1);
-        task.setStatus(isMark);
-        Storage.saveTasks(list);
-        String message = isMark ? "Nice! I've marked this task as done:"
-                : "OK, I've marked this task as not done yet:";
-        printResponse(message + "\n" + "    " + task);
-    }
+    private static final Storage storage = new Storage("./data/judy.txt");
+    private static final TaskList tasks = new TaskList(storage);
+    //private Ui ui;
+    //private Parser parser;
 
     public static void main(String[] args) {
         InputHandler inputHandler = new InputHandler();
         String logo = "Judy";
-        printResponse("Hello! I'm " + logo + "\n" +
+        Util.printResponse("Hello! I'm " + logo + "\n" +
                 "    What can I do for you?");
 
-        String input = inputHandler.getMessage();
-        while (!input.equals("bye")) {
+        while (true) {
+            String input = inputHandler.getMessage();
+            if (input.equals("bye")) {
+                Util.printResponse(" Bye. Hope to see you again soon!");
+                break;
+            }
+            handleCommand(input);
+        }
+        storage.saveTasks(tasks.getTasks());
+    }
+
+    private static void handleCommand(String input) {
             try {
                 if (input.equals("list")) {
-                    printList();
+                    tasks.printList();
                 } else if (input.startsWith("mark") || input.startsWith("unmark")) {
                     String[] parts = input.split(" ");
                     if (parts.length > 1) {
                         int number = Integer.parseInt(parts[1]);
                         boolean isMark = input.startsWith("mark");
-                        updateStatus(number, isMark);
+                        tasks.updateStatus(number, isMark);
                     } else {
                         throw new JudyException("Invalid mark command. Usage: mark <task number>");
                     }
@@ -111,13 +41,13 @@ public class Judy {
                 } else if (input.startsWith("todo")) {
                     String[] parts = input.split(" ");
                     String[] description = Arrays.copyOfRange(parts, 1, parts.length);
-                    addTask(description, TaskType.TODO, null, null, null);
+                    tasks.addTask(description, TaskType.TODO, null, null, null);
 
                 } else if (input.startsWith("deadline")) {
                     String[] parts = input.split("/by");
                     if (parts.length == 2) {
                         String[] description = parts[0].trim().split(" ", 2);
-                        addTask(new String[]{description[1]}, TaskType.DEADLINE, new String[]{parts[1]}, null, null);
+                        tasks.addTask(new String[]{description[1]}, TaskType.DEADLINE, new String[]{parts[1]}, null, null);
                     } else {
                         throw new JudyException("Invalid deadline format. Use: deadline <description> /by <time>");
                     }
@@ -126,7 +56,7 @@ public class Judy {
                     String[] parts = input.split("/from |/to ");
                     if (parts.length == 3) {
                         String[] description = parts[0].trim().split(" ", 2);
-                        addTask(new String[]{description[1]}, TaskType.EVENT, null, new String[]{parts[1]}, new String[]{parts[2]});
+                        tasks.addTask(new String[]{description[1]}, TaskType.EVENT, null, new String[]{parts[1]}, new String[]{parts[2]});
                     } else {
                         throw new JudyException("Invalid event format. Use: deadline <description> /by <time>");
                     }
@@ -135,7 +65,7 @@ public class Judy {
                     String[] parts = input.split(" ");
                     if (parts.length == 2) {
                         int number = Integer.parseInt(parts[1]);
-                        deleteTask(number);
+                        tasks.deleteTask(number);
                     } else {
                         throw new JudyException("Invalid delete format. Use: delete <index>");
                     }
@@ -144,13 +74,11 @@ public class Judy {
                     throw new JudyException("Unknown command. Please try again with a valid command.");
                 }
             } catch (JudyException e) {
-                printError(e.getMessage());
+                Util.printError(e.getMessage());
             } catch (NumberFormatException e) {
-                printError("Invalid number format. Please provide a valid task number.");
+                Util.printError("Invalid number format. Please provide a valid task number.");
             }
-            input = inputHandler.getMessage();
         }
-        printResponse(" Bye. Hope to see you again soon!");
     }
-}
+
 
