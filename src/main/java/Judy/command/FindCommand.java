@@ -3,14 +3,15 @@ import Judy.task.*;
 import Judy.ui.*;
 import Judy.util.*;
 
-public class DeleteCommand extends Command {
-    private final int index;
+public class FindCommand extends Command{
 
-    public DeleteCommand(int index) {
-        this.index = index;
+    private final String keyward;
+
+    public FindCommand(String keyward) {
+        this.keyward = keyward;
     }
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws JudyException {
-        tasks.deleteTask(index);
+        tasks.findTask(keyward);
     }
 }
