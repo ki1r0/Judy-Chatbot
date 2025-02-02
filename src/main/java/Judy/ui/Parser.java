@@ -16,6 +16,14 @@ public class Parser {
         if (input.equals("list")) {
             return new ListCommand();
 
+        } else if (input.startsWith("find")) {
+            String[] parts = input.split(" ");
+            if (parts.length > 1) {
+                return new FindCommand(parts[1].trim());
+            } else {
+                throw new JudyException("Invalid find command. Usage: mark <keyward>");
+            }
+
         } else if (input.startsWith("mark") || input.startsWith("unmark")) {
             String[] parts = input.split(" ");
             if (parts.length > 1) {

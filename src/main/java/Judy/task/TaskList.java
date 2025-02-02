@@ -102,6 +102,26 @@ public class TaskList {
     }
 
     /**
+     * Finds all tasks in the task list.
+     *
+     * @param keyward         the keyward used to find the tasks containing it.
+     */
+    public void findTask(String keyward) {
+        StringBuilder response = new StringBuilder("Here are the matching tasks in your list:\n");
+        int index = 1;
+        for (Task task : this.list) {
+            if (task.getDescription().toLowerCase().contains(keyward)) {
+                response.append("    ").append(index).append(". ").append(task.toString()).append("\n");
+                index++;
+            }
+        }
+        if (this.list.isEmpty() || index == 1) {
+            response.append("    No tasks containing the keyward found in the list.");
+        }
+        Util.printResponse(response.toString());
+    }
+
+    /**
      * Prints all tasks in the task list with their corresponding index numbers.
      */
     public void printList() {
@@ -115,6 +135,6 @@ public class TaskList {
         if (this.list.isEmpty()) {
             response.append("    No tasks found in the list.");
         }
-        Util.printResponse(response.toString()); // Use printResponse for consistent formatting
+        Util.printResponse(response.toString());
     }
 }
