@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49b40de9-a82a-403a-93e9-969003a27278" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/command/AddTaskCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/command/AddTaskCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/task/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/task/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/task/TaskList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/task/TaskList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/ui/Judy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/ui/Judy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Judy/ui/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/ui/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/util/Storage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/util/Storage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +93,7 @@
     "Gradle.ip-master [todotest].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "branch-A-JavaDoc",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/sunsi/Desktop/ip-master",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"

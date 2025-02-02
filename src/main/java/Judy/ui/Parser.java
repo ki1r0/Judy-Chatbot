@@ -15,6 +15,7 @@ public class Parser {
     public static Command parse(String input) throws JudyException {
         if (input.equals("list")) {
             return new ListCommand();
+
         } else if (input.startsWith("mark") || input.startsWith("unmark")) {
             String[] parts = input.split(" ");
             if (parts.length > 1) {
@@ -24,9 +25,11 @@ public class Parser {
             } else {
                 throw new JudyException("Invalid mark command. Usage: mark <task number>");
             }
+
         } else if (input.startsWith("todo")) {
             String[] description = Arrays.copyOfRange(input.split(" "), 1, input.split(" ").length);
             return new AddTaskCommand(description, TaskType.TODO, null, null, null);
+
         } else if (input.startsWith("deadline")) {
             String[] parts = input.split("/by");
             if (parts.length == 2) {
@@ -35,6 +38,7 @@ public class Parser {
             } else {
                 throw new JudyException("Invalid deadline format. Use: deadline <description> /by <time>");
             }
+
         } else if (input.startsWith("event")) {
             String[] parts = input.split("/from |/to ");
             if (parts.length == 3) {
@@ -43,6 +47,7 @@ public class Parser {
             } else {
                 throw new JudyException("Invalid event format. Use: event <description> /from <start> /to <end>");
             }
+
         } else if (input.startsWith("delete")) {
             String[] parts = input.split(" ");
             if (parts.length == 2) {
@@ -51,6 +56,7 @@ public class Parser {
             } else {
                 throw new JudyException("Invalid delete format. Use: delete <index>");
             }
+            
         } else {
             throw new JudyException("Unknown command. Please try again with a valid command.");
         }
