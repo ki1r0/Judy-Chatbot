@@ -3,6 +3,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Locale;
 
 public class Task {
     private final String description;
@@ -24,17 +25,17 @@ public class Task {
         DateTimeFormatter formatters[] = {
                 DateTimeFormatter.ofPattern("d/MM/yyyy HHmm"),
                 DateTimeFormatter.ofPattern("d/M/yyyy HHmm"),
-                DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"), // Format 2: yyyy-MM-dd HHmm (e.g., 2019-12-02 1800)
+                DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"),
                 DateTimeFormatter.ofPattern("yyyy-MM-dd")
         };
         for (DateTimeFormatter formatter : formatters) {
             //dateTime = dateTime.trim();
             try {
                 if (formatter.toString().contains("HHmm")) {
-                    return LocalDateTime.parse(dateTime, formatter).format(DateTimeFormatter.ofPattern("MMM d yyyy"));
+                    return LocalDateTime.parse(dateTime, formatter).format(DateTimeFormatter.ofPattern("MMM d yyyy", Locale.ENGLISH));
                 } else {
                     LocalDate date = LocalDate.parse(dateTime, formatter);
-                    return date.atStartOfDay().format(DateTimeFormatter.ofPattern("MMM d yyyy"));
+                    return date.atStartOfDay().format(DateTimeFormatter.ofPattern("MMM d yyyy", Locale.ENGLISH));
                 }
             } catch (DateTimeParseException e) {}
         }
