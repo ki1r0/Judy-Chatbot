@@ -17,6 +17,14 @@ public class AddTaskCommand extends Command {
         this.end = end;
     }
 
+    /**
+     * Executes the command to add a task to the TaskList.
+     *
+     * @param tasks    the {@code TaskList} to which the task will be added
+     * @param ui       the {@code Ui} instance for user interaction (not directly used here)
+     * @param storage  the {@code Storage} instance for persisting tasks
+     * @throws JudyException if there's an error during task creation
+     */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws JudyException {
         tasks.addTask(description, type, deadline, start, end);

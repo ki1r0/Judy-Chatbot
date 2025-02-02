@@ -1,4 +1,6 @@
 package Judy.task;
+import Judy.util.JudyException;
+
 import javax.swing.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -24,6 +26,11 @@ public class Task {
         isDone = status;
     }
 
+    /**
+     * Parses the date and time.
+     *
+     * @param dateTime    the {@code TaskList} to which the task will be added
+     */
     public String parseDateTime(String dateTime) {
         dateTime = dateTime.trim();
         DateTimeFormatter formatters[] = {

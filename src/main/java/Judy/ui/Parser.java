@@ -5,6 +5,13 @@ import Judy.task.*;
 import java.util.Arrays;
 
 public class Parser {
+
+    /**
+     * Parses the input message.
+     *
+     * @param input    input message by the user.
+     * @throws JudyException if there's an error during task creation
+     */
     public static Command parse(String input) throws JudyException {
         if (input.equals("list")) {
             return new ListCommand();

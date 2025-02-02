@@ -14,6 +14,9 @@ public class Judy {
         tasks = new TaskList(storage.loadTasks(), storage);
     }
 
+    /**
+     * Starts the main execution loop of the application.
+     */
     public void run() {
         ui.showWelcome();
         boolean isExit = false;

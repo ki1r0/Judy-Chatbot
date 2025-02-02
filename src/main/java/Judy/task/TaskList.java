@@ -23,6 +23,11 @@ public class TaskList {
         return this.list;
     }
 
+    /**
+     * Deletes a task from the {@code TaskList} at the specified index.
+     *
+     * @param index    the 1-based index of the task to be deleted from the task list.
+     */
     public void deleteTask(int index) {
         if (index < 1 || index > list.size()) {
             Util.printError("Invalid task number. Please provide a number between 1 and " + list.size() + ".");
@@ -38,6 +43,12 @@ public class TaskList {
         Util.printResponse(response);
     }
 
+    /**
+     * Parses the input message.
+     *
+     * @param index    the 1-based index of the task to be updated from the task list.
+     * @param isMark   whether the input message is a mark or an unmark command.
+     */
     public void updateStatus (int index, boolean isMark) {
         if (index < 1 || index > list.size()) {
             Util.printError("Invalid task number. Please provide a number between 1 and " + list.size() + ".");
@@ -51,6 +62,15 @@ public class TaskList {
         Util.printResponse(message + "\n" + "    " + task);
     }
 
+    /**
+     * Adds a new task to the task list based on the provided task type and details.
+     *
+     * @param description an array of strings representing the task description. Cannot be empty.
+     * @param type        the type of task to add (TODO, DEADLINE, or EVENT).
+     * @param deadline    the deadline for DEADLINE tasks. Can be {@code null} for other task types.
+     * @param start       the start time for EVENT tasks. Can be {@code null} for other task types.
+     * @param end         the end time for EVENT tasks. Can be {@code null} for other task types.
+     */
     public void addTask(String[] description, TaskType type, String[] deadline, String[] start, String[] end) {
         if (description.length == 0) {
             Util.printError("The description cannot be empty. Please provide a valid description.");
@@ -81,6 +101,9 @@ public class TaskList {
         Util.printResponse(response);
     }
 
+    /**
+     * Prints all tasks in the task list with their corresponding index numbers.
+     */
     public void printList() {
         StringBuilder response = new StringBuilder("Here are the tasks in your list:\n");
         int index = 1;

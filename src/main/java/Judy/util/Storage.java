@@ -11,6 +11,11 @@ public class Storage {
         this.filePath = filePath;
     }
 
+    /**
+     * Saves the list of tasks to a file specified by {@code filePath}.
+     *
+     * @param tasks the list of tasks to be saved to the file.
+     */
     public void saveTasks(List<Task> tasks) {
         try {
             File file = new File(this.filePath);
@@ -30,6 +35,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Loads tasks from the file specified by {@code filePath}.
+     *
+     * @return a list of {@code Task} objects loaded from the file. Returns an empty list if the file does not exist or is empty.
+     */
     public List<Task> loadTasks() {
         List<Task> tasks = new ArrayList<>();
         File file = new File(this.filePath);
@@ -55,6 +65,13 @@ public class Storage {
         return tasks;
     }
 
+    /**
+     * Parses a line from the task file and converts it into a {@code Task} object.
+     *
+     * @param line the string line from the task file to be parsed.
+     * @return a {@code Task} object corresponding to the parsed data.
+     * @throws Exception if the line format is invalid or the task type is unknown.
+     */
     private static Task parseTask(String line) throws Exception {
         String[] parts = line.split(" \\| ");
         if (parts.length < 3 || parts.length > 4) {
