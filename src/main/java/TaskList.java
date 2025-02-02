@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class TaskList {
     private ArrayList<Task> list;
     private Storage storage;
 
-    public TaskList(Storage storage) {
-        this.list = new ArrayList<>();
+    public TaskList(List<Task> list, Storage storage) {
+        this.list = new ArrayList<>(list);
         this.storage = storage;
     }
 
