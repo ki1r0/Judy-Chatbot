@@ -56,7 +56,7 @@ public class Parser {
             } else {
                 throw new JudyException("Invalid delete format. Use: delete <index>");
             }
-            
+
         } else {
             throw new JudyException("Unknown command. Please try again with a valid command.");
         }
