@@ -5,22 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49b40de9-a82a-403a-93e9-969003a27278" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/Judy/TaskListTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Judy/TaskTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Judy/TodoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6.2/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.2/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6.2/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.2/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6.2/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.2/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.2/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/judy.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/judy.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/task/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/task/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/ui/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/ui/Parser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,6 +89,7 @@
     "Gradle.ip-master [:Judy.main()].executor": "Run",
     "Gradle.ip-master [TodoTest].executor": "Run",
     "Gradle.ip-master [clean build].executor": "Run",
+    "Gradle.ip-master [shadowJar].executor": "Run",
     "Gradle.ip-master [test --tests \"Judy.TaskTest\"].executor": "Run",
     "Gradle.ip-master [test --tests Judy.TaskTest].executor": "Run",
     "Gradle.ip-master [todotest].executor": "Run",
@@ -124,9 +112,10 @@
       <command value="./gradlew test --tests &quot;Judy.TaskTest&quot; --info" />
       <command value="./gradlew test --tests &quot;Judy.TaskTest&quot; --debug " />
       <command value="ls build/classes/java/test/Judy/TaskTest.class" />
+      <command value="gradlew shadowJar" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.Test">
+  <component name="RunManager" selected="Gradle.ip-master [shadowJar]">
     <configuration name="Judy" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Judy.ui.Judy" />
       <module name="ip-master.main" />
@@ -184,12 +173,36 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="ip-master [shadowJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="shadowJar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.Judy" />
+      <item itemvalue="Gradle.ip-master [shadowJar]" />
       <item itemvalue="Gradle.Test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.ip-master [shadowJar]" />
         <item itemvalue="Gradle.Test" />
         <item itemvalue="Application.Judy" />
       </list>
