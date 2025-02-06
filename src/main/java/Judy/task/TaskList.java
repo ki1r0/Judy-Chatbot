@@ -37,9 +37,9 @@ public class TaskList {
         Task task = list.get(index - 1);
         list.remove(index - 1);
         storage.saveTasks(list);
-        String response = String.format("Noted. I've removed this task:\n" +
-                "      %s\n" +
-                "    Now you have %d tasks in the list.", task, list.size());
+        String response = String.format("Noted. I've removed this task:\n"
+                + "      %s\n"
+                + "    Now you have %d tasks in the list.", task, list.size());
         Util.printResponse(response);
     }
 
@@ -49,7 +49,7 @@ public class TaskList {
      * @param index    the 1-based index of the task to be updated from the task list.
      * @param isMark   whether the input message is a mark or an unmark command.
      */
-    public void updateStatus (int index, boolean isMark) {
+    public void updateStatus(int index, boolean isMark) {
         if (index < 1 || index > list.size()) {
             Util.printError("Invalid task number. Please provide a number between 1 and " + list.size() + ".");
             return;
@@ -79,25 +79,25 @@ public class TaskList {
 
         Task task = null;
         switch (type) {
-            case TODO:
-                task = new Todo(String.join(" ", description));
-                break;
-            case DEADLINE:
-                task = new Deadline(String.join(" ", description), String.join(" ", deadline));
-                break;
-            case EVENT:
-                task = new Event(String.join(" ", description), String.join(" ", start), String.join(" ", end));
-                break;
-            default:
-                Util.printError("Unknown task type. Please try again.");
-                return;
+        case TODO:
+            task = new Todo(String.join(" ", description));
+            break;
+        case DEADLINE:
+            task = new Deadline(String.join(" ", description), String.join(" ", deadline));
+            break;
+        case EVENT:
+            task = new Event(String.join(" ", description), String.join(" ", start), String.join(" ", end));
+            break;
+        default:
+            Util.printError("Unknown task type. Please try again.");
+            return;
         }
 
         list.add(task);
         storage.saveTasks(list);
-        String response = String.format("Got it. I've added this task:\n" +
-                "      %s\n" +
-                "    Now you have %d tasks in the list.", task, list.size());
+        String response = String.format("Got it. I've added this task:\n"
+                + "      %s\n"
+                + "    Now you have %d tasks in the list.", task, list.size());
         Util.printResponse(response);
     }
 
