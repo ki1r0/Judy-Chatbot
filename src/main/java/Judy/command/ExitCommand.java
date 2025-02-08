@@ -5,8 +5,8 @@ import Judy.util.*;
 
 public class ExitCommand extends Command {
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws JudyException {
-        ui.showEnd();
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws JudyException {
+        return ui.showEnd();
     }
 
     @Override

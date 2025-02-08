@@ -1,30 +1,19 @@
 package Judy.ui;
-import Judy.util.*;
 
 public class Ui {
-    private final String logo = "Judy";
-    private InputHandler inputHandler;
-    public Ui() {
-        inputHandler = new InputHandler();
-    }
-    public void showLoadingError() {
-        this.inputHandler = new InputHandler();
+    private static final String logo = "Judy";
+    public Ui() { }
+
+    public static String showWelcome() {
+        return "Hello! I'm " + logo + "\n"
+                + "    What can I do for you?";
     }
 
-    public void showWelcome() {
-        Util.printResponse("Hello! I'm " + logo + "\n" +
-                "    What can I do for you?");
+    public String showEnd() {
+        return " Bye. Hope to see you again soon!";
     }
 
-    public void showEnd() {
-        Util.printResponse(" Bye. Hope to see you again soon!");
-    }
-
-    public void showError(String message) {
-        Util.printError(message);
-    }
-
-    public String readInput() {
-        return inputHandler.getMessage();
+    public String showError(String message) {
+        return "Error: " + message;
     }
 }

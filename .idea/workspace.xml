@@ -5,9 +5,65 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d31053e8-ed9e-4bf6-b258-c1c5f344e125" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/modules/ip-master.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Judy/ui/Launcher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Judy/ui/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Judy/ui/MainWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Putin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Trump.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/DialogBox.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/MainWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.2/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.2/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.2/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Judy/command/AddTaskCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Judy/command/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Judy/command/Command.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Judy/command/DeleteCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Judy/command/DeleteCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Judy/command/ExitCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Judy/command/ExitCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Judy/command/FindCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Judy/command/FindCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Judy/command/ListCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Judy/command/ListCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Judy/command/MarkCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Judy/command/MarkCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Judy/task/Task.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Judy/task/Task.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Judy/task/TaskList$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Judy/task/TaskList$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Judy/task/TaskList.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Judy/task/TaskList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Judy/ui/Judy.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Judy/ui/Judy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Judy/ui/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Judy/ui/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Judy/ui/Ui.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Judy/ui/Ui.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Judy/util/Storage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Judy/util/Storage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/AddTaskCommand.class.uniqueId6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Command.class.uniqueId2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/DeleteCommand.class.uniqueId3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/ExitCommand.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/FindCommand.class.uniqueId8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Judy.class.uniqueId9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/ListCommand.class.uniqueId4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/MarkCommand.class.uniqueId1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Parser.class.uniqueId10" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/TaskList$1.class.uniqueId7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/TaskList.class.uniqueId5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/judy.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/judy.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/command/AddTaskCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/command/AddCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/command/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/command/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/command/DeleteCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/command/DeleteCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/command/ExitCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/command/ExitCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/command/FindCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/command/FindCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/command/ListCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/command/ListCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/command/MarkCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/command/MarkCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/task/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/task/Task.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Judy/task/TaskList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/task/TaskList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/ui/Judy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/ui/Judy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/ui/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/ui/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/ui/Ui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/ui/Ui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Judy/TaskListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Judy/TaskListTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,18 +91,7 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="ip-master" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="ip-master" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="ip-master" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
             <select />
@@ -73,23 +118,30 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2sThYDEyuX6fFJw8K2iUq2Bu6nW" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/sunsi/Desktop/ip-master/checkstyle/checkstyle.xml",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "org.infernus.idea.checkstyle.CheckStyleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Gradle.ip-master [:Judy.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ip-master [:Launcher.main()].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sunsi/Desktop/ip-master&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.infernus.idea.checkstyle.CheckStyleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="gradlew todotest" />
@@ -104,11 +156,24 @@
       <command value="gradlew shadowJar" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.Judy">
+  <component name="RunManager" selected="Application.Launcher">
     <configuration name="Judy" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="jbr-17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Judy.ui.Judy" />
+      <module name="ip-master.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Judy.ui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Launcher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Judy.ui.Launcher" />
       <module name="ip-master.main" />
       <extension name="coverage">
         <pattern>
@@ -209,6 +274,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.Launcher" />
       <item itemvalue="Application.Judy" />
       <item itemvalue="Gradle.ip-master [:test]" />
       <item itemvalue="Gradle.ip-master [shadowJar]" />
@@ -216,6 +282,7 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Launcher" />
         <item itemvalue="Gradle.ip-master [shadowJar]" />
         <item itemvalue="Gradle.Test" />
         <item itemvalue="Application.Judy" />
@@ -232,6 +299,9 @@
       <updated>1738485518841</updated>
     </task>
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ip_master$ParserTest.ic" NAME="ParserTest Coverage Results" MODIFIED="1738517125324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

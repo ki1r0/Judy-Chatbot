@@ -10,7 +10,7 @@ public class DeleteCommand extends Command {
         this.index = index;
     }
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws JudyException {
-        tasks.deleteTask(index);
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws JudyException {
+        return tasks.deleteTask(index);
     }
 }

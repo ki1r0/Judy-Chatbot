@@ -13,7 +13,7 @@ public class MarkCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws JudyException {
-
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws JudyException {
+        return tasks.setMark(this.index, this.isMark);
     }
 }

@@ -36,13 +36,13 @@ public class Parser {
 
         } else if (input.startsWith("todo")) {
             String[] description = Arrays.copyOfRange(input.split(" "), 1, input.split(" ").length);
-            return new AddTaskCommand(description, TaskType.TODO, null, null, null);
+            return new AddCommand(description, TaskType.TODO, null, null, null);
 
         } else if (input.startsWith("deadline")) {
             String[] parts = input.split("/by");
             if (parts.length == 2) {
                 String[] description = parts[0].trim().split(" ", 2);
-                return new AddTaskCommand(new String[]{description[1]}, TaskType.DEADLINE, new String[]{parts[1].trim()}, null, null);
+                return new AddCommand(new String[]{description[1]}, TaskType.DEADLINE, new String[]{parts[1].trim()}, null, null);
             } else {
                 throw new JudyException("Invalid deadline format. Use: deadline <description> /by <time>");
             }
@@ -51,7 +51,7 @@ public class Parser {
             String[] parts = input.split("/from |/to ");
             if (parts.length == 3) {
                 String[] description = parts[0].trim().split(" ", 2);
-                return new AddTaskCommand(new String[]{description[1]}, TaskType.EVENT, null, new String[]{parts[1].trim()}, new String[]{parts[2]});
+                return new AddCommand(new String[]{description[1]}, TaskType.EVENT, null, new String[]{parts[1].trim()}, new String[]{parts[2]});
             } else {
                 throw new JudyException("Invalid event format. Use: event <description> /from <start> /to <end>");
             }

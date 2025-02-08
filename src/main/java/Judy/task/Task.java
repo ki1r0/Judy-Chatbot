@@ -48,7 +48,7 @@ public class Task {
                     LocalDate date = LocalDate.parse(dateTime, formatter);
                     return date.atStartOfDay().format(DateTimeFormatter.ofPattern("MMM d yyyy", Locale.ENGLISH));
                 }
-            } catch (DateTimeParseException e) {}
+            } catch (DateTimeParseException e) { }
         }
         System.out.println("Invalid date format.");
         return null;

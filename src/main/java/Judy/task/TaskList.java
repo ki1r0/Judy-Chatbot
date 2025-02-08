@@ -1,9 +1,6 @@
 package Judy.task;
-import Judy.task.*;
-import Judy.ui.*;
 import Judy.util.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class TaskList {
@@ -28,10 +25,9 @@ public class TaskList {
      *
      * @param index    the 1-based index of the task to be deleted from the task list.
      */
-    public void deleteTask(int index) {
+    public String deleteTask(int index) {
         if (index < 1 || index > list.size()) {
-            Util.printError("Invalid task number. Please provide a number between 1 and " + list.size() + ".");
-            return;
+            return "Invalid task number. Please provide a number between 1 and " + list.size() + ".";
         }
 
         Task task = list.get(index - 1);
@@ -41,6 +37,7 @@ public class TaskList {
                 + "      %s\n"
                 + "    Now you have %d tasks in the list.", task, list.size());
         Util.printResponse(response);
+        return (response);
     }
 
     /**
@@ -49,10 +46,9 @@ public class TaskList {
      * @param index    the 1-based index of the task to be updated from the task list.
      * @param isMark   whether the input message is a mark or an unmark command.
      */
-    public void updateStatus(int index, boolean isMark) {
+    public String setMark(int index, boolean isMark) throws JudyException {
         if (index < 1 || index > list.size()) {
-            Util.printError("Invalid task number. Please provide a number between 1 and " + list.size() + ".");
-            return;
+            throw new JudyException("Invalid task number. Please provide a number between 1 and " + list.size() + ".");
         }
         Task task = list.get(index - 1);
         task.setStatus(isMark);
@@ -60,6 +56,7 @@ public class TaskList {
         String message = isMark ? "Nice! I've marked this task as done:"
                 : "OK, I've marked this task as not done yet:";
         Util.printResponse(message + "\n" + "    " + task);
+        return message + "\n" + "    " + task;
     }
 
     /**
@@ -71,10 +68,9 @@ public class TaskList {
      * @param start       the start time for EVENT tasks. Can be {@code null} for other task types.
      * @param end         the end time for EVENT tasks. Can be {@code null} for other task types.
      */
-    public void addTask(String[] description, TaskType type, String[] deadline, String[] start, String[] end) {
+    public String addTask(String[] description, TaskType type, String[] deadline, String[] start, String[] end) throws JudyException {
         if (description.length == 0) {
-            Util.printError("The description cannot be empty. Please provide a valid description.");
-            return;
+            throw new JudyException("The description cannot be empty. Please provide a valid description.");
         }
 
         Task task = null;
@@ -90,7 +86,7 @@ public class TaskList {
             break;
         default:
             Util.printError("Unknown task type. Please try again.");
-            return;
+            return null;
         }
 
         list.add(task);
@@ -99,6 +95,7 @@ public class TaskList {
                 + "      %s\n"
                 + "    Now you have %d tasks in the list.", task, list.size());
         Util.printResponse(response);
+        return response;
     }
 
     /**
@@ -106,7 +103,7 @@ public class TaskList {
      *
      * @param keyward         the keyward used to find the tasks containing it.
      */
-    public void findTask(String keyward) {
+    public String findTask(String keyward) {
         StringBuilder response = new StringBuilder("Here are the matching tasks in your list:\n");
         int index = 1;
         for (Task task : this.list) {
@@ -119,12 +116,13 @@ public class TaskList {
             response.append("    No tasks containing the keyward found in the list.");
         }
         Util.printResponse(response.toString());
+        return response.toString();
     }
 
     /**
      * Prints all tasks in the task list with their corresponding index numbers.
      */
-    public void printList() {
+    public String printList() {
         StringBuilder response = new StringBuilder("Here are the tasks in your list:\n");
         int index = 1;
         for (Task task : this.list) {
@@ -136,5 +134,6 @@ public class TaskList {
             response.append("    No tasks found in the list.");
         }
         Util.printResponse(response.toString());
+        return response.toString();
     }
 }

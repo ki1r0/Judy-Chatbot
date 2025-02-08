@@ -16,7 +16,6 @@ public class Judy {
 
     /**
      * Starts the main execution loop of the application.
-     */
     public void run() {
         ui.showWelcome();
         boolean isExit = false;
@@ -33,10 +32,20 @@ public class Judy {
             storage.saveTasks(tasks.getTasks());
         }
     }
+     */
 
-    public static void main(String[] args) {
-        new Judy("./data/judy.txt").run();
+    public String getResponse(String input) {
+        try {
+            Command command = Parser.parse(input);
+            String response = command.execute(tasks, ui, storage);
+            storage.saveTasks(tasks.getTasks());
+            return response;
+        } catch (JudyException e) {
+            return "Error: " + e.getMessage();
+        }
     }
+
+
 }
 
 

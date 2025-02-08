@@ -3,7 +3,7 @@ import Judy.task.*;
 import Judy.ui.*;
 import Judy.util.*;
 
-public class FindCommand extends Command{
+public class FindCommand extends Command {
 
     private final String keyward;
 
@@ -11,7 +11,7 @@ public class FindCommand extends Command{
         this.keyward = keyward;
     }
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws JudyException {
-        tasks.findTask(keyward);
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws JudyException {
+        return tasks.findTask(keyward);
     }
 }
