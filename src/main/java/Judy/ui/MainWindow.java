@@ -44,12 +44,17 @@ public class MainWindow extends AnchorPane {
      */
     @FXML
     private void handleUserInput() {
-        String input = userInput.getText();
-        String response = judy.getResponse(input);
-        dialogContainer.getChildren().addAll(
-                DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, JudyImage)
-        );
-        userInput.clear();
+        try {
+            String input = userInput.getText();
+            String response = judy.getResponse(input);
+            dialogContainer.getChildren().addAll(
+                    DialogBox.getUserDialog(input, userImage),
+                    DialogBox.getDukeDialog(response, JudyImage)
+            );
+            userInput.clear();
+        } catch (Exception e) {
+            e.printStackTrace(); // 🔍 Show full error
+            System.out.println("⚠️ Root Cause: " + e.getCause());
+        }
     }
 }

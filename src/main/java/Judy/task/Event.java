@@ -8,7 +8,7 @@ public class Event extends Task {
     public Event(String description, String start, String end) {
         super(description);
         this.start = parseDateTime(start);
-        this.end = parseDateTime(start);
+        this.end = parseDateTime(end);
     }
     @Override
     public String toString() {

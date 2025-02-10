@@ -21,8 +21,8 @@ public class TaskListTest {
 
     @Test
     void testAddTask() throws JudyException {
-        String[] description = {"read book"};
-        taskList.addTask(description, TaskType.TODO, null, null, null);
+        String description = "read book";
+        taskList.addTask( TaskType.TODO, description, null, null, null);
 
         assertEquals(1, taskList.getTasks().size(), "Task list should contain one task");
         assertTrue(taskList.getTasks().get(0) instanceof Todo);
@@ -33,7 +33,7 @@ public class TaskListTest {
 
     @Test
     void testDeleteTask_validIndex() throws JudyException {
-        taskList.addTask(new String[]{"read book"}, TaskType.TODO, null, null, null);
+        taskList.addTask( TaskType.TODO, "read book", null, null, null);
         assertEquals(1, taskList.getTasks().size());
 
         taskList.deleteTask(1);

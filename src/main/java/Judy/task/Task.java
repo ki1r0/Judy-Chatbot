@@ -51,7 +51,7 @@ public class Task {
             } catch (DateTimeParseException e) { }
         }
         System.out.println("Invalid date format.");
-        return null;
+        return dateTime;
     }
 
     public String toString() {

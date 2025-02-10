@@ -5,16 +5,12 @@ import Judy.ui.Ui;
 import Judy.util.Storage;
 import Judy.util.JudyException;
 public class AddCommand extends Command {
-    private final String[] description;
     private final TaskType type;
-    private final String[] deadline, start, end;
+    private final String[] details;
 
-    public AddCommand(String[]description, TaskType type, String[] deadline, String[] start, String[] end) {
-        this.description = description;
+    public AddCommand(TaskType type, String... details) {
         this.type = type;
-        this.deadline = deadline;
-        this.start = start;
-        this.end = end;
+        this.details = details;
     }
 
     /**
@@ -27,6 +23,6 @@ public class AddCommand extends Command {
      */
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage) throws JudyException {
-        return tasks.addTask(description, type, deadline, start, end);
+        return tasks.addTask(type, details);
     }
 }

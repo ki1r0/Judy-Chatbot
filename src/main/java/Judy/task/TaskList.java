@@ -62,27 +62,26 @@ public class TaskList {
     /**
      * Adds a new task to the task list based on the provided task type and details.
      *
-     * @param description an array of strings representing the task description. Cannot be empty.
      * @param type        the type of task to add (TODO, DEADLINE, or EVENT).
-     * @param deadline    the deadline for DEADLINE tasks. Can be {@code null} for other task types.
-     * @param start       the start time for EVENT tasks. Can be {@code null} for other task types.
-     * @param end         the end time for EVENT tasks. Can be {@code null} for other task types.
+     * @param details    details of the task added.
      */
-    public String addTask(String[] description, TaskType type, String[] deadline, String[] start, String[] end) throws JudyException {
-        if (description.length == 0) {
+    public String addTask(TaskType type, String... details) throws JudyException {
+        if (details.length == 0) {
             throw new JudyException("The description cannot be empty. Please provide a valid description.");
         }
 
         Task task = null;
         switch (type) {
         case TODO:
-            task = new Todo(String.join(" ", description));
+            task = new Todo(details[0]);
             break;
         case DEADLINE:
-            task = new Deadline(String.join(" ", description), String.join(" ", deadline));
+            if (details.length < 2) throw new JudyException("Deadline task requires a description and a deadline.");
+            task = new Deadline(details[0], details[1]);
             break;
         case EVENT:
-            task = new Event(String.join(" ", description), String.join(" ", start), String.join(" ", end));
+            if (details.length < 3) throw new JudyException("Event task requires a description, start, and end time.");
+            task = new Event(details[0], details[2], details[3]);
             break;
         default:
             Util.printError("Unknown task type. Please try again.");
@@ -97,7 +96,6 @@ public class TaskList {
         Util.printResponse(response);
         return response;
     }
-
     /**
      * Finds all tasks in the task list.
      *

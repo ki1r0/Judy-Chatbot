@@ -35,23 +35,27 @@ public class Parser {
             }
 
         } else if (input.startsWith("todo")) {
-            String[] description = Arrays.copyOfRange(input.split(" "), 1, input.split(" ").length);
-            return new AddCommand(description, TaskType.TODO, null, null, null);
+            String description = input.substring(5);
+            return new AddCommand(TaskType.TODO, description, null, null, null);
 
         } else if (input.startsWith("deadline")) {
             String[] parts = input.split("/by");
             if (parts.length == 2) {
-                String[] description = parts[0].trim().split(" ", 2);
-                return new AddCommand(new String[]{description[1]}, TaskType.DEADLINE, new String[]{parts[1].trim()}, null, null);
+                String description = parts[0].trim().substring(9);
+                return new AddCommand(TaskType.DEADLINE, description, parts[1].trim(), null, null);
             } else {
                 throw new JudyException("Invalid deadline format. Use: deadline <description> /by <time>");
             }
 
         } else if (input.startsWith("event")) {
-            String[] parts = input.split("/from |/to ");
+            String[] parts = input.split(" /from | /to ");
+            System.out.println("Parsed Parts Length: " + parts.length); // Debugging
+            for (int i = 0; i < parts.length; i++) {
+                System.out.println("Part[" + i + "]: " + parts[i]);
+            }
             if (parts.length == 3) {
-                String[] description = parts[0].trim().split(" ", 2);
-                return new AddCommand(new String[]{description[1]}, TaskType.EVENT, null, new String[]{parts[1].trim()}, new String[]{parts[2]});
+                String description = parts[0].trim().substring(6);
+                return new AddCommand(TaskType.EVENT, description, null, parts[1], parts[2]);
             } else {
                 throw new JudyException("Invalid event format. Use: event <description> /from <start> /to <end>");
             }
