@@ -1,15 +1,3 @@
 T | 0 | summer
 T | 0 | jaja
-T | 0 | jaja
-T | 0 | 111
-T | 0 | hahah
-D | 0 | i can jjj | null
-D | 0 | jaja | null
-D | 0 | kaj | null
-T | 0 | haha
-D | 0 | submit | null
-T | 0 | damn
-D | 0 | com | null
-D | 0 | so | null
-E | 0 | cmm | null - null
-E | 0 | comin | monday - friday
+

@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d31053e8-ed9e-4bf6-b258-c1c5f344e125" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/judy.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/judy.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/command/AddCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/command/AddCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/task/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/task/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/task/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/task/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/task/TaskList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/task/TaskList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/ui/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/ui/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Judy/ui/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Judy/ui/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Judy/TaskListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Judy/TaskListTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
