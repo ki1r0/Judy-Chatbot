@@ -18,6 +18,7 @@ public class Parser {
 
         } else if (input.startsWith("find")) {
             String[] parts = input.split(" ");
+            assert parts.length > 0 : "Split parts should not be empty";
             if (parts.length > 1) {
                 return new FindCommand(parts[1].trim());
             } else {
@@ -26,6 +27,7 @@ public class Parser {
 
         } else if (input.startsWith("mark") || input.startsWith("unmark")) {
             String[] parts = input.split(" ");
+            assert parts.length > 0 : "Split parts should not be empty";
             if (parts.length > 1) {
                 int number = Integer.parseInt(parts[1]);
                 boolean isMark = input.startsWith("mark");
@@ -40,6 +42,7 @@ public class Parser {
 
         } else if (input.startsWith("deadline")) {
             String[] parts = input.split("/by");
+            assert parts.length > 0 : "Split parts should not be empty";
             if (parts.length == 2) {
                 String description = parts[0].trim().substring(9);
                 return new AddCommand(TaskType.DEADLINE, description, parts[1].trim(), null, null);
@@ -49,12 +52,15 @@ public class Parser {
 
         } else if (input.startsWith("event")) {
             String[] parts = input.split(" /from | /to ");
-            System.out.println("Parsed Parts Length: " + parts.length); // Debugging
             for (int i = 0; i < parts.length; i++) {
                 System.out.println("Part[" + i + "]: " + parts[i]);
             }
+            assert parts.length > 0 : "Split parts should not be empty";
             if (parts.length == 3) {
                 String description = parts[0].trim().substring(6);
+                assert !description.isEmpty() : "Event description should not be empty";
+                assert !parts[1].isEmpty() : "Event start time should not be empty";
+                assert !parts[2].isEmpty() : "Event end time should not be empty";
                 return new AddCommand(TaskType.EVENT, description, null, parts[1], parts[2]);
             } else {
                 throw new JudyException("Invalid event format. Use: event <description> /from <start> /to <end>");
@@ -62,6 +68,7 @@ public class Parser {
 
         } else if (input.startsWith("delete")) {
             String[] parts = input.split(" ");
+            assert parts.length > 0 : "Split parts should not be empty";
             if (parts.length == 2) {
                 int number = Integer.parseInt(parts[1]);
                 return new DeleteCommand(number);
