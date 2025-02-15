@@ -1,5 +1,6 @@
 package Judy.task;
-import java.time.LocalDateTime;
+
+import Judy.ui.Parser;
 
 public class Event extends Task {
     private final String start;
@@ -7,8 +8,8 @@ public class Event extends Task {
 
     public Event(String description, String start, String end) {
         super(description);
-        this.start = parseDateTime(start);
-        this.end = parseDateTime(end);
+        this.start = Parser.parseDateTime(start);
+        this.end = Parser.parseDateTime(end);
     }
     @Override
     public String toString() {

@@ -1,11 +1,16 @@
 package Judy.ui;
+
 import Judy.command.*;
 import Judy.util.*;
 import Judy.task.*;
-import java.util.Arrays;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Locale;
 
 public class Parser {
-
     /**
      * Parses the input message.
      *
@@ -87,5 +92,58 @@ public class Parser {
         } else {
             throw new JudyException("Unknown command. Please try again with a valid command.");
         }
+    }
+
+    /**
+     * Parses the date and time.
+     *
+     * @param dateTime    the {@code TaskList} to which the task will be added
+     */
+    public static String parseDateTime(String dateTime) {
+        dateTime = dateTime.trim();
+        DateTimeFormatter formatters[] = {
+                DateTimeFormatter.ofPattern("d/MM/yyyy HHmm"),
+                DateTimeFormatter.ofPattern("d/M/yyyy HHmm"),
+                DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"),
+                DateTimeFormatter.ofPattern("yyyy-MM-dd")
+        };
+
+        try {
+            for (DateTimeFormatter formatter : formatters) {
+                dateTime = dateTime.trim();
+                try {
+                    if (formatter.toString().contains("HHmm")) {
+                        return LocalDateTime.parse(dateTime, formatter)
+                                .format(DateTimeFormatter.ofPattern("MMM d yyyy", Locale.ENGLISH));
+                    } else {
+                        LocalDate date = LocalDate.parse(dateTime, formatter);
+                        return date.atStartOfDay()
+                                .format(DateTimeFormatter.ofPattern("MMM d yyyy", Locale.ENGLISH));
+                    }
+                } catch (DateTimeParseException e) {
+                }
+            }
+            if (dateTime.length() < 2) {
+                throw new IllegalArgumentException("Input must be at least two letters long.");
+            }
+            for (Day day : Day.values()) {
+                if (day.name().startsWith(dateTime.toUpperCase()) && day.name().contains(dateTime.toUpperCase())) {
+                    return dayToDate(day.name());
+                }
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        System.out.println("Invalid date format.");
+        return "Invalid date";
+    }
+
+    private static String dayToDate(String dayName ) throws IllegalArgumentException {
+        DayOfWeek targetDay = DayOfWeek.valueOf(dayName.toUpperCase());
+        LocalDate today = LocalDate.now();
+        DayOfWeek todayDay = today.getDayOfWeek();
+        int daysUntilTarget = (targetDay.getValue() - todayDay.getValue() + 7) % 7;
+        LocalDate resultDate = today.plusDays(daysUntilTarget);
+        return resultDate.toString();
     }
 }

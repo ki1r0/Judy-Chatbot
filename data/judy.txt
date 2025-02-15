@@ -1,3 +1,5 @@
 T | 0 | summer
-
-
+T | 0 | jjj /by mo
+D | 0 | jjj | Invalid date
+D | 0 | kkk | Invalid date
+D | 0 | kkk | 2025-02-17
