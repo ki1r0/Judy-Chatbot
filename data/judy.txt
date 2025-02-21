@@ -1,12 +1,3 @@
 T | 0 | summer
-T | 0 | jjj /by mo
-E | 0 | cashin | Feb 24 2025 - Feb 23 2025
-E | 0 | cashin | Feb 24 2025 - Feb 23 2025
-E | 0 | fine | Feb 24 2025 - Feb 23 2025
-E | 0 | ddd | Feb 24 2025 - Feb 23 2025
-E | 0 | cashin | Feb 24 2025 - Feb 23 2025
-E | 0 | hhh | Feb 24 2025 - Feb 23 2025
-E | 0 | hhh | Feb 24 2025 - Feb 23 2025
-E | 0 | hhh | Feb 24 2025 - Mar 2 2025
-E | 0 | hhh | Feb 24 2025 - Mar 2 2025
 E | 0 | lunch at home | Feb 24 2025 - Mar 2 2025
+D | 0 | final submission | Feb 24 2025
