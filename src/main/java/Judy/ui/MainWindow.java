@@ -30,7 +30,7 @@ public class MainWindow extends AnchorPane {
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
         String welcomeMessage = Ui.showWelcome();
-        dialogContainer.getChildren().add(DialogBox.getDukeDialog(welcomeMessage, JudyImage));
+        dialogContainer.getChildren().add(DialogBox.getJudyDialog(welcomeMessage, JudyImage));
     }
 
     /** Injects the Duke instance */
@@ -49,7 +49,7 @@ public class MainWindow extends AnchorPane {
             String response = judy.getResponse(input);
             dialogContainer.getChildren().addAll(
                     DialogBox.getUserDialog(input, userImage),
-                    DialogBox.getDukeDialog(response, JudyImage)
+                    DialogBox.getJudyDialog(response, JudyImage)
             );
             userInput.clear();
         } catch (Exception e) {

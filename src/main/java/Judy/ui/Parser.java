@@ -11,6 +11,14 @@ import java.time.format.DateTimeParseException;
 import java.util.Locale;
 
 public class Parser {
+    private static final DateTimeFormatter[] FORMATTERS = {
+            DateTimeFormatter.ofPattern("d/MM/yyyy HHmm"),
+            DateTimeFormatter.ofPattern("d/M/yyyy HHmm"),
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"),
+            DateTimeFormatter.ofPattern("yyyy-MM-dd"),
+            DateTimeFormatter.ofPattern("MMM d yyyy", Locale.ENGLISH)
+    };
+
     /**
      * Parses the input message.
      *
@@ -97,53 +105,53 @@ public class Parser {
     /**
      * Parses the date and time.
      *
-     * @param dateTime    the {@code TaskList} to which the task will be added
+     * @param dateTimes    the {@code TaskList} to which the task will be added
      */
-    public static String parseDateTime(String dateTime) {
-        dateTime = dateTime.trim();
-        DateTimeFormatter formatters[] = {
-                DateTimeFormatter.ofPattern("d/MM/yyyy HHmm"),
-                DateTimeFormatter.ofPattern("d/M/yyyy HHmm"),
-                DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"),
-                DateTimeFormatter.ofPattern("yyyy-MM-dd")
-        };
-
-        try {
-            for (DateTimeFormatter formatter : formatters) {
-                dateTime = dateTime.trim();
-                try {
-                    if (formatter.toString().contains("HHmm")) {
-                        return LocalDateTime.parse(dateTime, formatter)
-                                .format(DateTimeFormatter.ofPattern("MMM d yyyy", Locale.ENGLISH));
-                    } else {
-                        LocalDate date = LocalDate.parse(dateTime, formatter);
-                        return date.atStartOfDay()
-                                .format(DateTimeFormatter.ofPattern("MMM d yyyy", Locale.ENGLISH));
-                    }
-                } catch (DateTimeParseException e) {
-                }
-            }
-            if (dateTime.length() < 2) {
-                throw new IllegalArgumentException("Input must be at least two letters long.");
-            }
-            for (Day day : Day.values()) {
-                if (day.name().startsWith(dateTime.toUpperCase()) && day.name().contains(dateTime.toUpperCase())) {
-                    return dayToDate(day.name());
-                }
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
+    public static String parseDateTime(String... dateTimes) {
+        if (dateTimes.length < 1 || dateTimes.length > 2) {
+            throw new IllegalArgumentException("Function accepts either one or two date arguments.");
         }
-        System.out.println("Invalid date format.");
-        return "Invalid date";
+
+        LocalDateTime parsedA = parseToLocalDateTime(dateTimes[0].trim(), LocalDate.now());
+
+        if (dateTimes.length == 1) {
+            return formatDate(parsedA);
+        }
+
+        LocalDateTime parsedB = parseToLocalDateTime(dateTimes[1].trim(), parsedA.toLocalDate());
+
+        return formatDate(parsedA) + " - " + formatDate(parsedB);
     }
 
-    private static String dayToDate(String dayName ) throws IllegalArgumentException {
+    private static LocalDateTime parseToLocalDateTime(String input, LocalDate reference) {
+        for (DateTimeFormatter formatter : FORMATTERS) {
+            try {
+                if (formatter.toString().contains("HHmm")) {
+                    return LocalDateTime.parse(input, formatter);
+                } else {
+                    LocalDate date = LocalDate.parse(input, formatter);
+                    return date.atStartOfDay();
+                }
+            } catch (DateTimeParseException ignored) { }
+        }
+
+        try {
+            LocalDate nextDate = dayToDate(input, reference);
+            return nextDate.atStartOfDay();
+        } catch (IllegalArgumentException e) {
+            throw new DateTimeParseException("Invalid date format", input, 0);
+        }
+    }
+
+    private static LocalDate dayToDate(String dayName, LocalDate referenceDate) throws IllegalArgumentException {
         DayOfWeek targetDay = DayOfWeek.valueOf(dayName.toUpperCase());
-        LocalDate today = LocalDate.now();
-        DayOfWeek todayDay = today.getDayOfWeek();
+        DayOfWeek todayDay = referenceDate.getDayOfWeek();
         int daysUntilTarget = (targetDay.getValue() - todayDay.getValue() + 7) % 7;
-        LocalDate resultDate = today.plusDays(daysUntilTarget);
-        return resultDate.toString();
+        if (daysUntilTarget == 0) daysUntilTarget = 7; // Ensure it is in the future
+        return referenceDate.plusDays(daysUntilTarget);
+    }
+
+    private static String formatDate(LocalDateTime dateTime) {
+        return dateTime.format(DateTimeFormatter.ofPattern("MMM d yyyy", Locale.ENGLISH));
     }
 }

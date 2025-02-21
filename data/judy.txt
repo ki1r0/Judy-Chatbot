@@ -1,5 +1,12 @@
 T | 0 | summer
 T | 0 | jjj /by mo
-D | 0 | jjj | Invalid date
-D | 0 | kkk | Invalid date
-D | 0 | kkk | 2025-02-17
+E | 0 | cashin | Feb 24 2025 - Feb 23 2025
+E | 0 | cashin | Feb 24 2025 - Feb 23 2025
+E | 0 | fine | Feb 24 2025 - Feb 23 2025
+E | 0 | ddd | Feb 24 2025 - Feb 23 2025
+E | 0 | cashin | Feb 24 2025 - Feb 23 2025
+E | 0 | hhh | Feb 24 2025 - Feb 23 2025
+E | 0 | hhh | Feb 24 2025 - Feb 23 2025
+E | 0 | hhh | Feb 24 2025 - Mar 2 2025
+E | 0 | hhh | Feb 24 2025 - Mar 2 2025
+E | 0 | lunch at home | Feb 24 2025 - Mar 2 2025
