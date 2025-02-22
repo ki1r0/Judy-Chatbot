@@ -1,27 +1,152 @@
-# Duke project template
+# Judy Chatbot - User Guide
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+## 1. Introduction
 
-## Setting up in Intellij
+Welcome to Judy Chatbot, a task management assistant that helps you organize To-Dos, Deadlines, and Events. You can interact with Judy via a Graphical User Interface (GUI) or Command-Line Interface (CLI).
 
-Prerequisites: JDK 17, update Intellij to the most recent version.
+## 2. Installation & Setup
 
-1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project first)
-1. Open the project into Intellij as follows:
-   1. Click `Open`.
-   1. Select the project directory, and click `OK`.
-   1. If there are any further prompts, accept the defaults.
-1. Configure the project to use **JDK 17** (not other versions) as explained in [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).<br>
-   In the same dialog, set the **Project language level** field to the `SDK default` option.
-1. After that, locate the `src/main/java/Duke.java` file, right-click it, and choose `Run Duke.main()` (if the code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like the below as the output:
-   ```
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
-   ```
+### Prerequisites
 
-**Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
-# Temporary Change
+- Java 11 or higher installed 
+
+- JavaFX installed (for GUI mode)
+
+- An IDE (IntelliJ IDEA, Eclipse) or command-line terminal
+
+### Installation Steps
+
+💻 Run via Terminal (CLI Mode)
+```
+git clone https://github.com/your-repo/judy-chatbot.git
+cd judy-chatbot
+java -jar judy.jar
+```
+
+🖥️ Run via IntelliJ (GUI Mode)
+
+1. Open the project in IntelliJ IDEA.
+2. Run Launcher.java inside the Judy.ui package.
+
+## 3. Features
+
+✅ Task Management - Add, delete, and list tasks
+
+✅ Three Task Types - To-Do, Deadline, and Event
+
+✅ Natural Date Parsing - Recognizes multiple date formats
+
+✅ Save & Load Tasks - Tasks persist between sessions
+
+✅ GUI Interface - Simple and interactive
+
+## 4. Available Commands
+
+### 📌 Adding Tasks
+
+| Command | Description | Example |
+|---------|------------|---------|
+| `todo <description>` | Adds a **To-Do task** | `todo read book` |
+| `deadline <description> /by <date>` | Adds a **Deadline task** | `deadline submit report /by 12/03/2025 1800` |
+| `event <description> /from <start> /to <end>` | Adds an **Event task** | `event project meeting /from 15/03/2025 /to 16/03/2025` |
+
+---
+
+### 📌 Listing Tasks
+
+| Command | Description | Example |
+|---------|------------|---------|
+| `list` | Shows all tasks | `list` |
+
+---
+
+### 📌 Marking and Deleting Tasks
+
+| Command | Description | Example |
+|---------|------------|---------|
+| `mark <task number>` | Marks a task as done | `mark 1` |
+| `unmark <task number>` | Unmarks a completed task | `unmark 1` |
+| `delete <task number>` | Deletes a task | `delete 2` |
+
+---
+
+### 📌 Searching Tasks
+
+| Command | Description | Example |
+|---------|------------|---------|
+| `find <keyword>` | Finds tasks matching keyword | `find meeting` |
+
+---
+
+### 📌 Exiting the Program
+
+| Command | Description | Example |
+|---------|------------|---------|
+| `bye` | Saves tasks and exits | `bye` |
+
+---
+
+## 5. Troubleshooting
+
+### ⚠️ "Invalid event format"
+
+Ensure you're using **`/from` and `/to`** correctly:
+
+```sh
+event <description> /from <start> /to <end>
+```
+✅ Example:
+```sh
+event team meeting /from Monday /to Friday
+```
+
+### ⚠️ "Cannot invoke String.trim() because dateTime is null"
+Ensure the date format is supported.
+
+✅ Supported Formats:
+
+```sh
+d/MM/yyyy HHmm
+d/M/yyyy HHmm
+yyyy-MM-dd HHmm
+yyyy-MM-dd
+```
+
+❌ Unsupported:
+
+```sh
+"tomorrow"
+"next week"
+```
+
+### ⚠️ "java.lang.reflect.InvocationTargetException"
+
+- This error usually happens inside JavaFX.
+- Run MainWindow.java and check logs for the root cause.
+- Common issues:
+  - Missing MainWindow.fxml
+  - Incorrect fx:controller="Judy.ui.MainWindow"
+
+## 6. FAQ
+
+### Q1: How does Judy save tasks?
+
+Judy automatically saves tasks in ./data/judy.txt.
+
+### Q2: How do I delete all tasks?
+
+Manually delete judy.txt or use delete <task number> repeatedly.
+
+### Q3: What happens if I enter an invalid command?
+
+Judy will prompt:
+
+```
+Unknown command. Please try again with a valid command. 
+```
+
+## 7. Credits
+
+👨‍💻 Developed by Sun Siliang
+
+🔗 [GitHub Pages](https://github.com/ki1r0/ip)
