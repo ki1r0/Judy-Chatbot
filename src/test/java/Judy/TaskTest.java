@@ -1,8 +1,10 @@
 package Judy;
 
-import Judy.ui.Parser;
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+
+import Judy.ui.Parser;
 
 public class TaskTest {
 

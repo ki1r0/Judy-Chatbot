@@ -1,5 +1,8 @@
 package Judy.ui;
 
+/**
+ * Represents different days in a week.
+ */
 public enum Day {
     MONDAY,
     TUESDAY,

@@ -1,8 +1,4 @@
 package Judy.ui;
-
-import Judy.command.*;
-import Judy.util.*;
-import Judy.task.*;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -10,6 +6,19 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Locale;
 
+import Judy.command.AddCommand;
+import Judy.command.Command;
+import Judy.command.DeleteCommand;
+import Judy.command.FindCommand;
+import Judy.command.ListCommand;
+import Judy.command.MarkCommand;
+import Judy.task.TaskType;
+import Judy.util.JudyException;
+
+
+/**
+ * Parses user input and converts date/time strings into formatted DateTime objects.
+ */
 public class Parser {
     private static final DateTimeFormatter[] FORMATTERS = {
             DateTimeFormatter.ofPattern("d/MM/yyyy HHmm"),
@@ -123,6 +132,14 @@ public class Parser {
         return formatDate(parsedA) + " - " + formatDate(parsedB);
     }
 
+    /**
+     * Parses an input string into a {@link LocalDateTime} using various date/time formats.
+     *
+     * @param input     The input string representing a date or date-time.
+     * @param reference A reference {@link LocalDate} used for relative date parsing.
+     * @return A {@link LocalDateTime} object representing the parsed date/time.
+     * @throws DateTimeParseException If the input format is invalid.
+     */
     private static LocalDateTime parseToLocalDateTime(String input, LocalDate reference) {
         for (DateTimeFormatter formatter : FORMATTERS) {
             try {
@@ -143,6 +160,15 @@ public class Parser {
         }
     }
 
+    /**
+     * Converts a day name (e.g., "Monday") into a {@link LocalDate} relative to a given reference date.
+     *
+     * @param dayName       The name of the day (case-insensitive).
+     * @param referenceDate The reference {@link LocalDate} from which the next occurrence is calculated.
+     * @return A {@link LocalDate} representing the next occurrence of the specified day.
+     * @throws IllegalArgumentException If the input is not a valid day name.
+     */
+    @SuppressWarnings("checkstyle:NeedBraces")
     private static LocalDate dayToDate(String dayName, LocalDate referenceDate) throws IllegalArgumentException {
         DayOfWeek targetDay = DayOfWeek.valueOf(dayName.toUpperCase());
         DayOfWeek todayDay = referenceDate.getDayOfWeek();
@@ -151,6 +177,12 @@ public class Parser {
         return referenceDate.plusDays(daysUntilTarget);
     }
 
+    /**
+     * Formats a {@link LocalDateTime} object into a human-readable string.
+     *
+     * @param dateTime The {@link LocalDateTime} to format.
+     * @return A formatted date string in the format "MMM d yyyy".
+     */
     private static String formatDate(LocalDateTime dateTime) {
         return dateTime.format(DateTimeFormatter.ofPattern("MMM d yyyy", Locale.ENGLISH));
     }

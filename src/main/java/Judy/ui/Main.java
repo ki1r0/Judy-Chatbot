@@ -11,7 +11,6 @@ import javafx.stage.Stage;
  * A GUI for Duke using FXML.
  */
 public class Main extends Application {
-
     private Judy judy = new Judy("./data/judy.txt");
 
     @Override
@@ -22,7 +21,7 @@ public class Main extends Application {
             Scene scene = new Scene(ap);
             stage.setScene(scene);
             stage.setTitle("Judy");
-            fxmlLoader.<MainWindow>getController().setDuke(judy);
+            fxmlLoader.<MainWindow>getController().setJudy(judy);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

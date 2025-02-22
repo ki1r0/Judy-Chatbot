@@ -1,13 +1,22 @@
 package Judy;
 
-import Judy.task.*;
-import Judy.util.JudyException;
-import Judy.util.Storage;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.anyList;
+import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import java.util.ArrayList;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+
+import Judy.task.TaskList;
+import Judy.task.TaskType;
+import Judy.task.Todo;
+import Judy.util.JudyException;
+import Judy.util.Storage;
 
 public class TaskListTest {
     private TaskList taskList;

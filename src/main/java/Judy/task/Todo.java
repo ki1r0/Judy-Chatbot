@@ -1,4 +1,8 @@
 package Judy.task;
+
+/**
+ * Represents a task with a description only.
+ */
 public class Todo extends Task {
     public Todo(String description) {
         super(description);

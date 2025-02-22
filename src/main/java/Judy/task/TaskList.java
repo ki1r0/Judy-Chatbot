@@ -1,12 +1,25 @@
 package Judy.task;
-import Judy.util.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaskList {
-    private ArrayList<Task> list;
-    private Storage storage;
+import Judy.util.JudyException;
+import Judy.util.Storage;
+import Judy.util.Util;
 
+/**
+ * Represents a list of tasks with storage functionality.
+ */
+public class TaskList {
+    private final ArrayList<Task> list;
+    private final Storage storage;
+
+    /**
+     * Constructs a TaskList with an initial list of tasks and a storage handler.
+     *
+     * @param list    The initial list of tasks.
+     * @param storage The storage system for saving tasks.
+     */
     public TaskList(List<Task> list, Storage storage) {
         this.list = new ArrayList<>(list);
         this.storage = storage;
@@ -65,6 +78,7 @@ public class TaskList {
      * @param type        the type of task to add (TODO, DEADLINE, or EVENT).
      * @param details    details of the task added.
      */
+    @SuppressWarnings("checkstyle:NeedBraces")
     public String addTask(TaskType type, String... details) throws JudyException {
         if (details.length == 0) {
             throw new JudyException("The description cannot be empty. Please provide a valid description.");

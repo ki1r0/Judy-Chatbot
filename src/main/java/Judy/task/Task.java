@@ -1,9 +1,18 @@
 package Judy.task;
 
+/**
+ * Represents a generic task with a description and completion status.
+ */
 public class Task {
     private final String description;
     private boolean isDone;
 
+    /**
+     * Constructs a Task with a given description.
+     * The task is initially not completed.
+     *
+     * @param description A brief description of the task.
+     */
     public Task(String description) {
         this.description = description;
         this.isDone = false;

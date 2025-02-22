@@ -1,13 +1,26 @@
 package Judy.command;
-import Judy.task.TaskType;
+
 import Judy.task.TaskList;
+import Judy.task.TaskType;
 import Judy.ui.Ui;
-import Judy.util.Storage;
 import Judy.util.JudyException;
+import Judy.util.Storage;
+
+/**
+ * Represents a command to add a task to the task list.
+ * This command is responsible for creating a task of a specific type with given details
+ * and adding it to the {@code TaskList}.
+ */
 public class AddCommand extends Command {
     private final TaskType type;
     private final String[] details;
 
+    /**
+     * Constructs an {@code AddCommand} with the specified task type and details.
+     *
+     * @param type    the type of task to be added
+     * @param details the details of the task (e.g., description, deadline, event time)
+     */
     public AddCommand(TaskType type, String... details) {
         this.type = type;
         this.details = details;

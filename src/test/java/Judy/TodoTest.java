@@ -1,8 +1,10 @@
 package Judy;
 
-import Judy.task.Todo;
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+
+import Judy.task.Todo;
 
 public class TodoTest {
     @Test

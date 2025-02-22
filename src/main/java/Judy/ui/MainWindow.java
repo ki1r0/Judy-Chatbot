@@ -26,6 +26,9 @@ public class MainWindow extends AnchorPane {
     private Image userImage = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/images/Putin.png")));
     private Image JudyImage = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/images/Trump.png")));
 
+    /**
+     * Initializes the UI by setting up scrolling behavior and displaying a welcome message.
+     */
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
@@ -33,8 +36,7 @@ public class MainWindow extends AnchorPane {
         dialogContainer.getChildren().add(DialogBox.getJudyDialog(welcomeMessage, JudyImage));
     }
 
-    /** Injects the Duke instance */
-    public void setDuke(Judy j) {
+    public void setJudy(Judy j) {
         judy = j;
     }
 

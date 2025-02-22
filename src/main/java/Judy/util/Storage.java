@@ -1,9 +1,22 @@
 package Judy.util;
-import Judy.task.*;
-import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import Judy.task.Deadline;
+import Judy.task.Event;
+import Judy.task.Task;
+import Judy.task.Todo;
+
+/**
+ * Handles file storage for saving and loading tasks in the Judy chatbot.
+ */
 public class Storage {
     private final String filePath;
 
@@ -84,18 +97,18 @@ public class Storage {
 
         Task task;
         switch (type) {
-            case "T":
-                task = new Todo(description);
-                break;
-            case "D":
-                task = new Deadline(description, parts[3]);
-                break;
-            case "E":
-                String[] eventTimes = parts[3].split(" - ");
-                task = new Event(description, eventTimes[0], eventTimes[1]);
-                break;
-            default:
-                throw new Exception("Unknown task type");
+        case "T":
+            task = new Todo(description);
+            break;
+        case "D":
+            task = new Deadline(description, parts[3]);
+            break;
+        case "E":
+            String[] eventTimes = parts[3].split(" - ");
+            task = new Event(description, eventTimes[0], eventTimes[1]);
+            break;
+        default:
+            throw new Exception("Unknown task type");
         }
         task.setStatus(isDone);
         return task;
