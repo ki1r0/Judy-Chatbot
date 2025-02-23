@@ -68,33 +68,25 @@ public class Parser {
         } else if (input.startsWith("deadline")) {
             String[] parts = input.split("/by");
             assert parts.length > 0 : "Split parts should not be empty";
-            if (parts.length == 2) {
+            if (parts.length == 2 && parts[0].trim().length() > 8) {
                 String description = parts[0].trim().substring(9);
-                assert !description.isEmpty() : "Deadline description should not be empty";
-                assert !parts[1].trim().isEmpty() : "Deadline time should not be empty";
-
-                return new AddCommand(TaskType.DEADLINE, description, parts[1].trim(), null, null);
+                String deadline = parseDateTime(parts[1].trim());
+                return new AddCommand(TaskType.DEADLINE, description, deadline, null, null);
             } else {
                 throw new JudyException("Invalid deadline format. Use: deadline <description> /by <time>");
             }
 
         } else if (input.startsWith("event")) {
             String[] parts = input.split(" /from | /to ");
-            for (int i = 0; i < parts.length; i++) {
-                System.out.println("Part[" + i + "]: " + parts[i]);
-            }
-
             assert parts.length > 0 : "Split parts should not be empty";
-            if (parts.length == 3) {
-                String description = parts[0].trim().substring(6);
-                assert !description.isEmpty() : "Event description should not be empty";
-                assert !parts[1].isEmpty() : "Event start time should not be empty";
-                assert !parts[2].isEmpty() : "Event end time should not be empty";
-                return new AddCommand(TaskType.EVENT, description, null, parts[1], parts[2]);
+            if (parts.length == 3 && parts[0].trim().length() > 5) {
+                String description = parts[0].trim();
+                String start = parseDateTime(parts[1].trim());
+                String end = parseDateTime(parts[2].trim());
+                return new AddCommand(TaskType.EVENT, description, null, start, end);
             } else {
                 throw new JudyException("Invalid event format. Use: event <description> /from <start> /to <end>");
             }
-
         } else if (input.startsWith("delete")) {
             String[] parts = input.split(" ");
             assert parts.length > 0 : "Split parts should not be empty";
@@ -116,11 +108,10 @@ public class Parser {
      *
      * @param dateTimes    the {@code TaskList} to which the task will be added
      */
-    public static String parseDateTime(String... dateTimes) {
+    public static String parseDateTime(String... dateTimes) throws JudyException {
         if (dateTimes.length < 1 || dateTimes.length > 2) {
-            throw new IllegalArgumentException("Function accepts either one or two date arguments.");
+            throw new JudyException("Function accepts either one or two date arguments.");
         }
-
         LocalDateTime parsedA = parseToLocalDateTime(dateTimes[0].trim(), LocalDate.now());
 
         if (dateTimes.length == 1) {
@@ -128,7 +119,6 @@ public class Parser {
         }
 
         LocalDateTime parsedB = parseToLocalDateTime(dateTimes[1].trim(), parsedA.toLocalDate());
-
         return formatDate(parsedA) + " - " + formatDate(parsedB);
     }
 
@@ -140,7 +130,7 @@ public class Parser {
      * @return A {@link LocalDateTime} object representing the parsed date/time.
      * @throws DateTimeParseException If the input format is invalid.
      */
-    private static LocalDateTime parseToLocalDateTime(String input, LocalDate reference) {
+    private static LocalDateTime parseToLocalDateTime(String input, LocalDate reference) throws JudyException {
         for (DateTimeFormatter formatter : FORMATTERS) {
             try {
                 if (formatter.toString().contains("HHmm")) {
@@ -156,7 +146,7 @@ public class Parser {
             LocalDate nextDate = dayToDate(input, reference);
             return nextDate.atStartOfDay();
         } catch (IllegalArgumentException e) {
-            throw new DateTimeParseException("Invalid date format", input, 0);
+            throw new JudyException("Invalid date format, please use a valid date format.");
         }
     }
 

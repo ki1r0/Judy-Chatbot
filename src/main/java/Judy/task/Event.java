@@ -1,12 +1,11 @@
 package Judy.task;
 
-import Judy.ui.Parser;
-
 /**
  * Represents an event task with a specific time period.
  */
 public class Event extends Task {
-    private final String period;
+    private final String start;
+    private final String end;
 
     /**
      * Constructs an Event task with a description and a time period.
@@ -17,15 +16,16 @@ public class Event extends Task {
      */
     public Event(String description, String start, String end) {
         super(description);
-        this.period = Parser.parseDateTime(start, end);
+        this.start = start;
+        this.end = end;
     }
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (" + period + ")";
+        return "[E]" + super.toString() + " (from: " + start + " to: " + end + ")";
     }
 
     @Override
     public String toDataString() {
-        return "E | " + super.toDataString() + " | " + period;
+        return "E | " + super.toDataString() + " | " + start + " - " + end;
     }
 }

@@ -1,7 +1,5 @@
 package Judy.task;
 
-import Judy.ui.Parser;
-
 /**
  * Represents a task with a specific deadline.
  */
@@ -16,7 +14,7 @@ public class Deadline extends Task {
      */
     public Deadline(String description, String deadline) {
         super(description);
-        this.deadline = Parser.parseDateTime(deadline);
+        this.deadline = (deadline);
     }
 
     @Override

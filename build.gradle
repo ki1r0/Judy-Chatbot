@@ -1,12 +1,8 @@
 plugins {
     id 'java'
-    id 'checkstyle'
     id 'application'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
-}
-
-checkstyle {
-    toolVersion = '10.2'
+    id 'checkstyle'
 }
 
 repositories {
@@ -14,6 +10,9 @@ repositories {
 }
 
 dependencies {
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.10.0'
+    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.10.0'
+
     String javaFxVersion = '17.0.7'
 
     implementation group: 'org.openjfx', name: 'javafx-base', version: javaFxVersion, classifier: 'win'
@@ -28,9 +27,6 @@ dependencies {
     implementation group: 'org.openjfx', name: 'javafx-graphics', version: javaFxVersion, classifier: 'win'
     implementation group: 'org.openjfx', name: 'javafx-graphics', version: javaFxVersion, classifier: 'mac'
     implementation group: 'org.openjfx', name: 'javafx-graphics', version: javaFxVersion, classifier: 'linux'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testImplementation 'org.mockito:mockito-core:4.3.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
 
 test {
@@ -38,7 +34,6 @@ test {
 
     testLogging {
         events "passed", "skipped", "failed"
-        include '**/*Test.class'
 
         showExceptions true
         exceptionFormat "full"
@@ -49,7 +44,7 @@ test {
 }
 
 application {
-    mainClass.set("seedu.Judy.Main")
+    mainClass.set("Judy.Launcher")
 }
 
 shadowJar {
@@ -57,6 +52,11 @@ shadowJar {
     archiveClassifier = null
 }
 
-run{
+run {
     standardInput = System.in
+    enableAssertions = true;
+}
+
+checkstyle {
+    toolVersion = '10.2'
 }

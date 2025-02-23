@@ -43,11 +43,23 @@ java -jar judy.jar
 ## 4. Available Commands
 
 ### 📌 Adding Tasks
+You can add different types of tasks using the following commands. 
 
-| Command | Description | Example |
-|---------|------------|---------|
-| `todo <description>` | Adds a **To-Do task** | `todo read book` |
-| `deadline <description> /by <date>` | Adds a **Deadline task** | `deadline submit report /by 12/03/2025 1800` |
+Multiple date formats are supported for deadlines and events.
+
+#### Supported Date Formats:
+
+- d/MM/yyyy HHmm → 12/03/2025 1800
+- d/M/yyyy HHmm → 5/3/2025 0930
+- yyyy-MM-dd HHmm → 2025-03-12 1800
+- yyyy-MM-dd → 2025-03-12
+- MMM d yyyy (English month names) → Mar 12 2025
+- Weekday names (Monday to Sunday) → deadline submit report /by Friday
+
+| Command                                       | Description | Example |
+|-----------------------------------------------|------------|---------|
+| `todo <description>`                          | Adds a **To-Do task** | `todo read book` |
+| `deadline <description> /by <date>`         | Adds a **Deadline task** | `deadline submit report /by 12/03/2025 1800` |
 | `event <description> /from <start> /to <end>` | Adds an **Event task** | `event project meeting /from 15/03/2025 /to 16/03/2025` |
 
 ---

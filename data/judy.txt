@@ -1,3 +1,2 @@
-T | 0 | summer
-E | 0 | lunch at home | Feb 24 2025 - Mar 2 2025
-D | 0 | final submission | Feb 24 2025
+T | 0 | nvm 
+D | 0 | come | Mar 2 2025
