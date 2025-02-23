@@ -62,7 +62,7 @@ public class Parser {
 
         } else if (input.startsWith("todo")) {
             String description;
-            if (input.length() <= 5) {
+            if (input.length() < 5) {
                 description = "";
             } else {
                 description = input.substring(5);
@@ -71,8 +71,13 @@ public class Parser {
         } else if (input.startsWith("deadline")) {
             String[] parts = input.split("/by");
             assert parts.length > 0 : "Split parts should not be empty";
-            if (parts.length == 2 && parts[0].trim().length() > 8) {
-                String description = parts[0].trim().substring(9);
+            String description;
+            if (parts.length == 2) {
+                if (parts[0].trim().length() < 9) {
+                    description = "";
+                } else {
+                    description = parts[0].trim().substring(9);
+                }
                 String deadline = parseDateTime(parts[1].trim());
                 return new AddCommand(TaskType.DEADLINE, description, deadline, null, null);
             } else {
@@ -82,8 +87,13 @@ public class Parser {
         } else if (input.startsWith("event")) {
             String[] parts = input.split(" /from | /to ");
             assert parts.length > 0 : "Split parts should not be empty";
-            if (parts.length == 3 && parts[0].trim().length() > 5) {
-                String description = parts[0].trim();
+            String description;
+            if (parts.length == 3) {
+                if (parts[0].trim().length() < 9) {
+                    description = "";
+                } else {
+                    description = parts[0].trim().substring(9);
+                }
                 String start = parseDateTime(parts[1].trim());
                 String end = parseDateTime(parts[2].trim());
                 return new AddCommand(TaskType.EVENT, description, null, start, end);
@@ -100,7 +110,6 @@ public class Parser {
             } else {
                 throw new JudyException("Invalid delete format. Use: delete <index>");
             }
-
         } else {
             throw new JudyException("Unknown command. Please try again with a valid command.");
         }

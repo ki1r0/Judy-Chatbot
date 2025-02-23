@@ -3,6 +3,7 @@ package Judy.task;
 import java.util.ArrayList;
 import java.util.List;
 
+import Judy.ui.Judy;
 import Judy.util.JudyException;
 import Judy.util.Storage;
 import Judy.util.Util;
@@ -38,9 +39,12 @@ public class TaskList {
      *
      * @param index    the 1-based index of the task to be deleted from the task list.
      */
-    public String deleteTask(int index) {
+    public String deleteTask(int index) throws JudyException {
+        if (list.isEmpty()) {
+            return "The list is currently empty.";
+        }
         if (index < 1 || index > list.size()) {
-            return "Invalid task number. Please provide a number between 1 and " + list.size() + ".";
+            throw new JudyException("Invalid task number. Please provide a valid task number.");
         }
 
         Task task = list.get(index - 1);
@@ -60,8 +64,11 @@ public class TaskList {
      * @param isMark   whether the input message is a mark or an unmark command.
      */
     public String setMark(int index, boolean isMark) throws JudyException {
+        if (list.isEmpty()) {
+            return "The list is currently empty.";
+        }
         if (index < 1 || index > list.size()) {
-            throw new JudyException("Invalid task number. Please provide a number between 1 and " + list.size() + ".");
+            throw new JudyException("Invalid task number. Please provide a valid task number.");
         }
         Task task = list.get(index - 1);
         task.setStatus(isMark);
@@ -80,7 +87,7 @@ public class TaskList {
      */
     @SuppressWarnings("checkstyle:NeedBraces")
     public String addTask(TaskType type, String... details) throws JudyException {
-        if (details.length == 0) {
+        if (details[0].trim().isEmpty()) {
             throw new JudyException("The description cannot be empty. Please provide a valid description.");
         }
 
@@ -98,8 +105,7 @@ public class TaskList {
             task = new Event(details[0], details[2], details[3]);
             break;
         default:
-            Util.printError("Unknown task type. Please try again.");
-            return null;
+            throw new JudyException("Unknown task type. Please try again.");
         }
 
         list.add(task);
@@ -113,19 +119,22 @@ public class TaskList {
     /**
      * Finds all tasks in the task list.
      *
-     * @param keyward         the keyward used to find the tasks containing it.
+     * @param keyword         the keyword used to find the tasks containing it.
      */
-    public String findTask(String keyward) {
+    public String findTask(String keyword) {
+        if (list.isEmpty()) {
+            return "The list is currently empty.";
+        }
         StringBuilder response = new StringBuilder("Here are the matching tasks in your list:\n");
         int index = 1;
         for (Task task : this.list) {
-            if (task.getDescription().toLowerCase().contains(keyward)) {
+            if (task.getDescription().toLowerCase().contains(keyword)) {
                 response.append("    ").append(index).append(". ").append(task.toString()).append("\n");
                 index++;
             }
         }
         if (this.list.isEmpty() || index == 1) {
-            response.append("    No tasks containing the keyward found in the list.");
+            response.append("    No tasks containing the keyword found in the list.");
         }
         Util.printResponse(response.toString());
         return response.toString();
@@ -135,6 +144,9 @@ public class TaskList {
      * Prints all tasks in the task list with their corresponding index numbers.
      */
     public String printList() {
+        if (list.isEmpty()) {
+            return "The list is currently empty.";
+        }
         StringBuilder response = new StringBuilder("Here are the tasks in your list:\n");
         int index = 1;
         for (Task task : this.list) {
