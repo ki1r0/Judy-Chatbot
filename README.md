@@ -17,7 +17,7 @@ and task management.
 ## Installation 📥
 
 1. Ensure you have **Java 11 or later** installed.  
-2. Download the latest `Judy.jar` release from [GitHub Releases]([#](https://github.com/ki1r0/ip/releases/tag/A-Release)).  
+2. Download the latest `Judy.jar` release from [GitHub Releases](https://github.com/ki1r0/ip/releases/tag/A-Release).  
 3. Run the chatbot using:  
    ```sh
    java -jar Judy.jar
