@@ -61,10 +61,13 @@ public class Parser {
             }
 
         } else if (input.startsWith("todo")) {
-            assert input.length() > 5 : "Todo command should have a description";
-            String description = input.substring(5);
+            String description;
+            if (input.length() <= 5) {
+                description = "";
+            } else {
+                description = input.substring(5);
+            }
             return new AddCommand(TaskType.TODO, description, null, null, null);
-
         } else if (input.startsWith("deadline")) {
             String[] parts = input.split("/by");
             assert parts.length > 0 : "Split parts should not be empty";
