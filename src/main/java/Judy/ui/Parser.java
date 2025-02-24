@@ -89,10 +89,10 @@ public class Parser {
             assert parts.length > 0 : "Split parts should not be empty";
             String description;
             if (parts.length == 3) {
-                if (parts[0].trim().length() < 9) {
+                if (parts[0].trim().length() < 6) {
                     description = "";
                 } else {
-                    description = parts[0].trim().substring(9);
+                    description = parts[0].trim().substring(6);
                 }
                 String start = parseDateTime(parts[1].trim());
                 String end = parseDateTime(parts[2].trim());
