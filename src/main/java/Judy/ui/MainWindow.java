@@ -7,6 +7,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 /**
  * Controller for the main GUI.
@@ -19,12 +20,15 @@ public class MainWindow extends AnchorPane {
     @FXML
     private TextField userInput;
     @FXML
+    private HBox inputContainer;
+    @FXML
     private Button sendButton;
-
     private Judy judy;
 
-    private Image userImage = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/images/Putin.png")));
-    private Image JudyImage = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/images/Trump.png")));
+    private Image userImage = new Image(Objects.requireNonNull(this.getClass()
+            .getResourceAsStream("/images/Putin.png")));
+    private Image JudyImage = new Image(Objects.requireNonNull(this.getClass()
+            .getResourceAsStream("/images/Trump.png")));
 
     /**
      * Initializes the UI by setting up scrolling behavior and displaying a welcome message.
@@ -32,6 +36,9 @@ public class MainWindow extends AnchorPane {
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
+        dialogContainer.prefWidthProperty().bind(scrollPane.widthProperty());
+        userInput.prefWidthProperty().bind(inputContainer.widthProperty()
+                .subtract(sendButton.widthProperty()).subtract(10));
         String welcomeMessage = Ui.showWelcome();
         dialogContainer.getChildren().add(DialogBox.getJudyDialog(welcomeMessage, JudyImage));
     }
@@ -55,7 +62,7 @@ public class MainWindow extends AnchorPane {
             );
             userInput.clear();
         } catch (Exception e) {
-            e.printStackTrace(); // 🔍 Show full error
+            e.printStackTrace();
             System.out.println("⚠️ Root Cause: " + e.getCause());
         }
     }
