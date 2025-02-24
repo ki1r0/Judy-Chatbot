@@ -12,8 +12,8 @@ import Judy.util.Storage;
 public class FindCommand extends Command {
     private final String keyword;
 
-    public FindCommand(String keyward) {
-        this.keyword = keyward;
+    public FindCommand(String keyword) {
+        this.keyword = keyword;
     }
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage) throws JudyException {
